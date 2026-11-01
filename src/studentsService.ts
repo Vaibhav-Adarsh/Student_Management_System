@@ -86,148 +86,63 @@
 // }
 // displayStudent("Vaibhav");
 // displayStudent("Rahul", 21);
-type Student = {
-    name: string;
-    age: number;
-    marks: number;
-    readonly rollNumber: number
-    email?: string;
-};
 
-type StudentResult = {
-    name: string;
-    total: number;
-    average: number;
-    isPassed: boolean;
-};
 
-const students: Student[] = [
-    {
-        name: 'Rahul',
-        age: 20,
-        marks: 85,
-        rollNumber: 101,
-    },
-    {
-        name: "priya ",
-        age: 21,
-        marks: 92,
-        rollNumber: 102,
-        email : "priya@gmail.com"
-    }
-];
-function addStudent(newStudent: Student): void {
+import type { Student } from "./types.js";
+import { students } from "./data.js";
+
+// 1. Add student
+export function addStudent(newStudent: Student): void {
     const studentExists = students.some(
-        (student) => student.rollNumber === newStudent.rollNumber
+        (student: Student) => student.rollNumber === newStudent.rollNumber
     );
-    if (studentExists){
-        console.log("student already exists");
-    }else {
+
+    if (studentExists) {
+        console.log("Student already exists");
+    } else {
         students.push(newStudent);
         console.log("Student added successfully");
     }
-
 }
 
-const newStudent: Student = {
-    name: "Amit Verma",
-    age: 22,
-    marks: 78,
-    rollNumber: 105
-};
-
-addStudent(newStudent);
-console.log(students);
-
-
-function findStudent(rollNumber: number): Student | undefined {
-    const result = students.find(
+// 2. Find student
+export function findStudent(rollNumber: number): Student | undefined {
+    return students.find(
         (student) => student.rollNumber === rollNumber
     );
-    return result;
 }
 
-console.log(findStudent(102));
-console.log(findStudent(999));
-
-function updateStudentMarks(rollNumber: number, newMarks: number): void {
+// 3. Update student marks
+export function updateStudentMarks(
+    rollNumber: number,
+    newMarks: number
+): void {
     const student = findStudent(rollNumber);
-    if(student){
+
+    if (student) {
         student.marks = newMarks;
         console.log("Student marks updated successfully");
-    }
-    else{
+    } else {
         console.log("Student not found");
     }
 }
 
-updateStudentMarks(101,90);
-console.log(findStudent(101));
+// 4. Delete student
+export function deleteStudent(rollNumber: number): void {
+    const index = students.findIndex(
+        (student) => student.rollNumber === rollNumber
+    );
 
-function deleteStudent(rollNumber: number): void {
-    const index = students.findIndex(student => student.rollNumber === rollNumber);
-    
-    if(index == -1){
+    if (index === -1) {
         console.log("Student not found");
         return;
     }
 
     students.splice(index, 1);
-    console.log("student deleted successfully");
+    console.log("Student deleted successfully");
 }
 
-function getAllStudents(): Student[]{
+// 5. Get all students
+export function getAllStudents(): Student[] {
     return students;
 }
-
-function getPassedStudents(): Student[]{
-    return students.filter(
-        (student) => student.marks >= 40
-    );
-}
-
-console.log(getPassedStudents());
-
-function getFailedStudents(): Student[]{
-    return students.filter(
-        (student) => student.marks < 40
-    );
-}
-
-console.log(getFailedStudents());
-
-function calculateClassAverage():number {
-    if(students.length === 0) return 0;
-
-    const total = students.reduce(
-        (sum, student) => sum + student.marks, 0
-    );
-
-    const Average = total / students.length;
-    return Average;
-}
-
-function calculateStudentResult(
-    rollNumber: number
-): StudentResult | undefined{
-
-    const student = findStudent(rollNumber);
-
-    if(!student){
-        console.log("Student not found");
-        return undefined;
-    }
-
-    const total = student.marks;
-    const average = student.marks;
-    const isPassed = average >= 40;
-
-    return {
-        name: student.name,
-        total: total,
-        average: average,
-        isPassed: isPassed
-    };
-}
-
-console.log(calculateClassAverage());

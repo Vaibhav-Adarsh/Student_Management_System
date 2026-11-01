@@ -1,0 +1,27 @@
+{
+  "name": "student_management_typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  "dev": "tsx src/index.ts",
+  "typecheck": "tsc --noEmit"
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vaibhav-Adarsh/Student_Management_System.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Vaibhav-Adarsh/Student_Management_System/issues"
+  },
+  "homepage": "https://github.com/Vaibhav-Adarsh/Student_Management_System#readme",
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
