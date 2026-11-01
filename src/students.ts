@@ -92,7 +92,14 @@ type Student = {
     marks: number;
     readonly rollNumber: number
     email?: string;
-}
+};
+
+type StudentResult = {
+    name: string;
+    total: number;
+    average: number;
+    isPassed: boolean;
+};
 
 const students: Student[] = [
     {
@@ -131,3 +138,96 @@ const newStudent: Student = {
 
 addStudent(newStudent);
 console.log(students);
+
+
+function findStudent(rollNumber: number): Student | undefined {
+    const result = students.find(
+        (student) => student.rollNumber === rollNumber
+    );
+    return result;
+}
+
+console.log(findStudent(102));
+console.log(findStudent(999));
+
+function updateStudentMarks(rollNumber: number, newMarks: number): void {
+    const student = findStudent(rollNumber);
+    if(student){
+        student.marks = newMarks;
+        console.log("Student marks updated successfully");
+    }
+    else{
+        console.log("Student not found");
+    }
+}
+
+updateStudentMarks(101,90);
+console.log(findStudent(101));
+
+function deleteStudent(rollNumber: number): void {
+    const index = students.findIndex(student => student.rollNumber === rollNumber);
+    
+    if(index == -1){
+        console.log("Student not found");
+        return;
+    }
+
+    students.splice(index, 1);
+    console.log("student deleted successfully");
+}
+
+function getAllStudents(): Student[]{
+    return students;
+}
+
+function getPassedStudents(): Student[]{
+    return students.filter(
+        (student) => student.marks >= 40
+    );
+}
+
+console.log(getPassedStudents());
+
+function getFailedStudents(): Student[]{
+    return students.filter(
+        (student) => student.marks < 40
+    );
+}
+
+console.log(getFailedStudents());
+
+function calculateClassAverage():number {
+    if(students.length === 0) return 0;
+
+    const total = students.reduce(
+        (sum, student) => sum + student.marks, 0
+    );
+
+    const Average = total / students.length;
+    return Average;
+}
+
+function calculateStudentResult(
+    rollNumber: number
+): StudentResult | undefined{
+
+    const student = findStudent(rollNumber);
+
+    if(!student){
+        console.log("Student not found");
+        return undefined;
+    }
+
+    const total = student.marks;
+    const average = student.marks;
+    const isPassed = average >= 40;
+
+    return {
+        name: student.name,
+        total: total,
+        average: average,
+        isPassed: isPassed
+    };
+}
+
+console.log(calculateClassAverage());
