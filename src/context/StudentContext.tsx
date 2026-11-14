@@ -12,6 +12,7 @@ import type { Student } from "../types/student";
 type StudentContextType = {
     students: Student[];
     setStudents: React.Dispatch<React.SetStateAction<Student[]>>;
+    handleDeleteStudents: (id: number) => void;
 
 };
 
@@ -51,9 +52,16 @@ export function StudentProvider({ children }: StudentProviderProps) {
         }
     });
 
+    function handleDeleteStudent(id: number){
+        setStudents((prevStudents) => 
+            prevStudents.filter((student) => student.rollNumber !== id)
+        );
+    }
     useEffect(() => {
         localStorage.setItem("students", JSON.stringify(students));
     }, [students]);
+
+
 
     return (
         <StudentContext.Provider value={{ students, setStudents }}>
