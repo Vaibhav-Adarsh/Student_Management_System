@@ -45,7 +45,20 @@ export function StudentProvider({ children }: StudentProviderProps) {
 
         try {
             const parsed = JSON.parse(savedStudents) as Student[];
-            return parsed.length > 0 ? parsed : defaultStudents;
+            if (parsed.length === 0) {
+                return defaultStudents;
+            }
+
+            let nextRollNumber = parsed
+                .map((student) => student.rollNumber)
+                .filter((rollNumber) => String(rollNumber).length < 13)
+                .reduce((highest, rollNumber) => Math.max(highest, rollNumber), 100);
+
+            return parsed.map((student) =>
+                String(student.rollNumber).length >= 13
+                    ? { ...student, rollNumber: ++nextRollNumber }
+                    : student
+            );
         } catch {
             return defaultStudents;
         }

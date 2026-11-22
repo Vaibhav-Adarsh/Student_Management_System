@@ -85,8 +85,16 @@ function Dashboard() {
 
     setError("");
 
+    const nextRollNumber = editingId ?? (
+      students
+        .map((student) => student.rollNumber)
+        .filter((rollNumber) => String(rollNumber).length < 13)
+        .reduce((highest, rollNumber) => Math.max(highest, rollNumber), 100)
+      + 1
+    );
+
     const newStudent: Student = {
-      rollNumber: editingId ?? Date.now(),
+      rollNumber: nextRollNumber,
       name: name.trim(),
       age,
       email: email.trim(),
