@@ -28,8 +28,7 @@ const defaultStudents: Student[] = [
     { rollNumber: 101, name: "Rahul Sharma", age: 20, email: "rahul@example.com", course: "BCA", marks: 92 },
     { rollNumber: 102, name: "Priya Verma", age: 21, email: "priya@example.com", course: "BCA", marks: 88 },
     { rollNumber: 103, name: "Aman Singh", age: 22, email: "aman@example.com", course: "B.Sc", marks: 76 },
-    { rollNumber: 104, name: "Neha Gupta", age: 23, email: "neha@example.com", course: "BCA", marks: 95 },
-    { rollNumber: 105, name: "Rohit Kumar", age: 20, email: "rohit@example.com", course: "B.Sc", marks: 82 },
+    { rollNumber: 104, name: "Neha Gupta", age: 23, email: "neha@example.com", course: "B.Com", marks: 85 },
 ];
 
 export function StudentProvider({ children }: StudentProviderProps) {
@@ -52,7 +51,7 @@ export function StudentProvider({ children }: StudentProviderProps) {
         }
     });
 
-    function handleDeleteStudent(id: number){
+    function handleDeleteStudents(id: number){
         setStudents((prevStudents) => 
             prevStudents.filter((student) => student.rollNumber !== id)
         );
@@ -64,7 +63,7 @@ export function StudentProvider({ children }: StudentProviderProps) {
 
 
     return (
-        <StudentContext.Provider value={{ students, setStudents }}>
+        <StudentContext.Provider value={{ students, setStudents, handleDeleteStudents }}>
             {children}
         </StudentContext.Provider>
     );
