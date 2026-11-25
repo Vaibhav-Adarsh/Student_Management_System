@@ -3,7 +3,6 @@ import { useStudents } from "../context/StudentContext";
 import {
   BarChart3,
   Bell,
-  ChevronDown,
   CircleCheck,
   CircleX,
   Download,
@@ -11,6 +10,7 @@ import {
   Trophy,
   Users,
 } from "lucide-react";
+import AccountBadge from "../components/AccountBadge";
 
 function Result() {
   const { students } = useStudents();
@@ -110,16 +110,7 @@ function Result() {
         >
           <Bell size={16} />
         </button>
-        <button
-          type="button"
-          className="flex h-10 items-center gap-2 rounded-full border border-slate-200 bg-white px-2.5 pr-3 text-sm font-medium text-slate-700"
-        >
-          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#e4ddff] text-xs font-bold text-[#6d5efc]">
-            A
-          </span>
-          Admin
-          <ChevronDown size={15} className="text-slate-500" />
-        </button>
+        <AccountBadge />
       </header>
 
       <div className="mb-6">

@@ -42,3 +42,88 @@ textarea,
 select {
   font: inherit;
 }
+
+html.dark {
+  color-scheme: dark;
+  background: #0b1220;
+}
+
+html.dark body {
+  background: #0b1220;
+  color: #e2e8f0;
+}
+
+html.dark [class~="bg-white"],
+html.dark [class~="bg-slate-50"],
+html.dark [class~="bg-slate-100"],
+html.dark [class~="bg-[#f5f7fa]"],
+html.dark [class~="bg-[#f4f6f9]"],
+html.dark [class~="bg-[#f8fafb]"],
+html.dark [class~="bg-[#f9fafb]"],
+html.dark [class~="bg-[#f8fafc]"],
+html.dark [class~="bg-[#f5f6f8]"] {
+  background-color: #1e293b;
+}
+
+html.dark [class~="bg-[#dfe4eb]"] {
+  background-color: #0b1220;
+}
+
+html.dark [class~="bg-[#f0f2f5]"] {
+  background-color: #172033;
+}
+
+html.dark [class~="bg-[#eef1f6]"],
+html.dark [class~="bg-[#f1f4f8]"],
+html.dark [class~="bg-slate-200"],
+html.dark [class~="bg-slate-300"] {
+  background-color: #334155;
+}
+
+html.dark [class~="bg-[#e9ecff]"],
+html.dark [class~="bg-[#e4ddff]"],
+html.dark [class~="bg-[#ede9fe]"],
+html.dark [class~="bg-[#f1ebfe]"],
+html.dark [class~="bg-[#f3e8ff]"] {
+  background-color: #312e63;
+}
+
+html.dark [class~="bg-[#dbeafe]"],
+html.dark [class~="bg-[#dfeafb]"] {
+  background-color: #1e3a5f;
+}
+
+html.dark [class~="bg-[#dcfce7]"],
+html.dark [class~="bg-[#e5f9eb]"] {
+  background-color: #174c36;
+}
+
+html.dark [class~="bg-[#fef3dd]"],
+html.dark [class~="bg-[#fef3c7]"] {
+  background-color: #574018;
+}
+
+html.dark [class~="bg-[#fee2e2]"] {
+  background-color: #5c292d;
+}
+
+html.dark [class~="text-slate-800"],
+html.dark [class~="text-slate-700"] {
+  color: #e2e8f0;
+}
+
+html.dark [class~="text-slate-600"],
+html.dark [class~="text-slate-500"],
+html.dark [class~="text-slate-400"] {
+  color: #94a3b8;
+}
+
+html.dark [class~="border-slate-100"],
+html.dark [class~="border-slate-200"] {
+  border-color: #334155;
+}
+
+html.dark [class~="hover:bg-slate-50"]:hover,
+html.dark [class~="hover:bg-slate-100"]:hover {
+  background-color: #334155;
+}

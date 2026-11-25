@@ -2,12 +2,12 @@
 import { useStudents } from "../context/StudentContext";
 import {
   Bell,
-  ChevronDown,
   CircleCheck,
   TrendingUp,
   Trophy,
   Users,
 } from "lucide-react";
+import AccountBadge from "../components/AccountBadge";
 
 import {
   BarChart,
@@ -205,13 +205,7 @@ function Analytics() {
         >
           <Bell size={16} />
         </button>
-        <div className="flex h-10 items-center gap-2 rounded-full border border-slate-200 bg-white px-2.5 pr-3 text-sm font-medium text-slate-700 shadow-sm">
-          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#e4ddff] text-xs font-bold text-[#6d5efc]">
-            A
-          </span>
-          Admin
-          <ChevronDown size={15} className="text-slate-500" />
-        </div>
+        <AccountBadge />
       </header>
 
       <div className="mb-6">

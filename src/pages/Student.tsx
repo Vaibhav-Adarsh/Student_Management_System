@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useStudents } from "../context/StudentContext";
-import { Bell, ChevronDown, Pencil, Save, Search, Trash2, Users, X } from "lucide-react";
+import { Bell, Pencil, Save, Search, Trash2, Users, X } from "lucide-react";
+import AccountBadge from "../components/AccountBadge";
 
 function Student() {
     const { students,setStudents, handleDeleteStudents } = useStudents();
@@ -90,13 +91,7 @@ function Student() {
                         <Bell size={16} />
                     </button>
 
-                    <div className="flex items-center gap-2.5 rounded-full border border-slate-200 bg-white px-2.5 py-1 shadow-sm">
-                        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#dfe3ff] text-xs font-semibold text-[#3b4bc7]">
-                            A
-                        </div>
-                        <span className="text-[0.96rem] font-medium text-slate-700">Admin</span>
-                        <ChevronDown className="h-4 w-4 text-slate-500" />
-                    </div>
+                    <AccountBadge />
                 </div>
             </header>
 

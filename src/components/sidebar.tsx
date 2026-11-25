@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
+
 const navItems = [
   { label: "Dashboard", path: "/", icon: LayoutDashboard },
   { label: "Students", path: "/students", icon: Users },
@@ -16,7 +17,11 @@ const navItems = [
   { label: "Analytics", path: "/analytics", icon: ChartNoAxesCombined },
 ];
 
-function Sidebar() {
+type SidebarProps = {
+  onLogout: () => void;
+};
+
+function Sidebar({ onLogout }: SidebarProps) {
   return (
     <aside className="flex w-[250px] shrink-0 flex-col border-r border-slate-200 bg-[#f0f2f5] p-5">
       <div className="mb-8 flex items-center gap-3 px-1">
@@ -54,16 +59,23 @@ function Sidebar() {
         </div>
 
         <div className="mt-9 space-y-1.5 border-t border-slate-200 pt-4">
-          <button
-            type="button"
-            className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-[0.98rem] font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-800"
+          <NavLink
+            to="/settings"
+            className={({ isActive }) =>
+              `flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-[0.98rem] font-medium transition ${
+                isActive
+                  ? "bg-[#e9ecff] text-[#4f46e5]"
+                  : "text-slate-600 hover:bg-slate-100 hover:text-slate-800"
+              }`
+            }
           >
             <Settings size={17} className="stroke-[2.1]" />
             Settings
-          </button>
+          </NavLink>
 
           <button
             type="button"
+            onClick={onLogout}
             className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-[0.98rem] font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-800"
           >
             <LogOut size={17} className="stroke-[2.1]" />
